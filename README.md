@@ -1,0 +1,1 @@
+There exists a very popular phrase on Twitch chat: "I'm 12 btw haHAA". For those who are wondering, "haHAA" is a BetterTTV (extension of Twitch) emote that denotes cringe. It's also associated with eSports athletes who look like that emote, including Bjergsen (LoL) and Thijs (Hearthstone). This app calculates your age and uses a sophisticated math equation to express it.

@@ -2,6 +2,8 @@
     <string name="app_name">btw haHAA</string>
     <string name="birthday_label">Your Birthday</string>
     <string name="ref_date_label">Current Date</string>
+    <string name="birthday_editor_id">birthday_editor</string>
+    <string name="ref_date_editor_id">ref_date_editor</string>
     <string name="picker_label">Choose...</string>
     <string name="meme_label">Meme!</string>
     <string name="function_label">Choose a Function</string>

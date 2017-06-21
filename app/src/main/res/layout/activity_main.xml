@@ -87,7 +87,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/function_label"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -98,12 +97,11 @@
         android:id="@+id/functions"
         android:layout_width="247dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="166dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/function_label">
+        app:layout_constraintTop_toBottomOf="@+id/function_label"
+        app:layout_constraintVertical_bias="0.056">
 
         <TableRow>
 
@@ -190,5 +188,19 @@
         </TableRow>
 
     </com.unnamedgreencompany.btwhahaa.RadioGrid>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="submitInputs"
+        android:text="@string/meme_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/functions"
+        tools:layout_editor_absoluteY="357dp" />
 
 </android.support.constraint.ConstraintLayout>

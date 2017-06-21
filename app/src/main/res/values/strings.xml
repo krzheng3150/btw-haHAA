@@ -19,4 +19,8 @@
     <string name="asin_label">arcsin(x)</string>
     <string name="acos_label">arccos(x)</string>
     <string name="atan_label">arctan(x)</string>
+    <string name="date_parse_error">That\'s not a date LUL</string>
+    <string name="negative_age_error">You cannot be born before the current date LUL</string>
+    <string name="young_age_error">You\'re too young to use this app BabyRage</string>
+    <string name="missing_function_error">Forgot to choose a function LUL</string>
 </resources>

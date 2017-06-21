@@ -7,12 +7,184 @@
     tools:context="com.unnamedgreencompany.btwhahaa.MainActivity">
 
     <TextView
+        android:id="@+id/birthday_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/birthday_label"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <TextView
+        android:id="@+id/ref_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ref_date_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <Button
+        android:id="@+id/birthday_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="@string/picker_label"
+        app:layout_constraintBottom_toBottomOf="@+id/birthday_editor"
+        app:layout_constraintLeft_toRightOf="@id/birthday_editor"
+        app:layout_constraintTop_toTopOf="@id/birthday_editor"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <Button
+        android:id="@+id/ref_date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="@string/picker_label"
+        app:layout_constraintBottom_toBottomOf="@+id/ref_date_editor"
+        app:layout_constraintLeft_toRightOf="@id/ref_date_editor"
+        app:layout_constraintTop_toTopOf="@id/ref_date_editor"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <EditText
+        android:id="@+id/birthday_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthday_label"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <EditText
+        android:id="@+id/ref_date_editor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ref_date_label"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <TextView
+        android:id="@+id/function_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/function_label"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ref_date_editor"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <com.unnamedgreencompany.btwhahaa.RadioGrid
+        android:id="@+id/functions"
+        android:layout_width="247dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="166dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/function_label">
+
+        <TableRow>
+
+            <RadioButton
+                android:id="@+id/fun_square"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/square_label" />
+
+            <RadioButton
+                android:id="@+id/fun_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_label" />
+
+            <RadioButton
+                android:id="@+id/fun_tan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tan_label" />
+        </TableRow>
+
+        <TableRow>
+
+            <RadioButton
+                android:id="@+id/fun_cube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cube_label" />
+
+            <RadioButton
+                android:id="@+id/fun_exp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exp2_label" />
+
+            <RadioButton
+                android:id="@+id/fun_asin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asin_label" />
+        </TableRow>
+
+        <TableRow>
+
+            <RadioButton
+                android:id="@+id/fun_sqrt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sqrt_label" />
+
+            <RadioButton
+                android:id="@+id/fun_ln"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ln_label" />
+
+            <RadioButton
+                android:id="@+id/fun_acos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acos_label" />
+        </TableRow>
+
+        <TableRow>
+
+            <RadioButton
+                android:id="@+id/fun_cbrt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cbrt_label" />
+
+            <RadioButton
+                android:id="@+id/fun_log2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/log2_label" />
+
+            <RadioButton
+                android:id="@+id/fun_atan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/atan_label" />
+        </TableRow>
+
+    </com.unnamedgreencompany.btwhahaa.RadioGrid>
 
 </android.support.constraint.ConstraintLayout>

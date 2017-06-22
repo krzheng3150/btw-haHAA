@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements DatePickerFragment.OnFragmentInteractionListener, RadioGrid.OnOptionSelectListener {
 
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
 
     private Calendar birthday;
     private Calendar refDate;
-    
+    private Integer functionId;
+
     private TextView messageDisplay;
     private EditText birthdayEditor;
     private EditText refDateEditor;
@@ -73,8 +75,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public boolean validateInputs() {
-        Calendar birthday, refDate;
+    private boolean validateInputs() {
         try {
             Date birthdayInput = dateFormat.parse(birthdayEditor.getText().toString());
             Date refDateInput = dateFormat.parse(refDateEditor.getText().toString());
@@ -95,11 +96,48 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
             showError(R.string.date_parse_error);
             return false;
         }
-        if (functions.getCheckedRadioButtonId() == -1) {
+        functionId = functions.getCheckedRadioButtonId();
+        if (functionId == -1) {
             showError(R.string.missing_function_error);
             return false;
         }
         return true;
+    }
+
+    public void calculate() {
+        if (validateInputs()) {
+            double age = getAge(birthday, refDate);
+            messageDisplay.setTextColor(Color.BLACK);
+            messageDisplay.setText(String.format(Locale.getDefault(), "I'm %f btw haHAA", age));
+        }
+    }
+
+    private double getAge(Calendar birthday, Calendar refDate) {
+        int birthYear = birthday.get(Calendar.YEAR);
+        int birthDayOfYear = birthday.get(Calendar.DAY_OF_YEAR);
+        boolean isBornAfterLeapDay = birthYear % 4 == 0 && birthDayOfYear > 60;
+
+        int refYear = refDate.get(Calendar.YEAR);
+        int refDayOfYear = refDate.get(Calendar.DAY_OF_YEAR);
+        boolean refDateWithinLeapPeriod = (refYear % 4 == 1 && refDayOfYear < 60) || (refYear % 4 == 0 && refDayOfYear > 60);
+
+        double numDaysInYear = 365;
+
+        if (isBornAfterLeapDay && !refDateWithinLeapPeriod) {
+            birthDayOfYear -= 1;
+        }
+        else if (refDateWithinLeapPeriod) {
+            numDaysInYear = 366;
+        }
+
+        boolean isBirthdayNoLaterThanRefDate = birthDayOfYear <= refDayOfYear;
+        double yearDiff = refYear - birthYear;
+        double dateDiff = isBirthdayNoLaterThanRefDate ?
+                refDayOfYear - birthDayOfYear : 366 - (birthDayOfYear - refDayOfYear);
+        if (!isBirthdayNoLaterThanRefDate) {
+            yearDiff -= 1;
+        }
+        return yearDiff + (dateDiff / numDaysInYear);
     }
 
     @Override
@@ -108,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         Calendar c = Calendar.getInstance();
         c.set(year, month, day);
         dateEditor.setText(dateFormat.format(c.getTime()));
+        calculate();
     }
 
     private void showError(int messageId) {
@@ -117,6 +156,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
 
     @Override
     public void onFunctionSelection(int fieldId) {
-        validateInputs();
+        calculate();
     }
 }

@@ -7,28 +7,34 @@
     tools:context="com.unnamedgreencompany.btwhahaa.MainActivity">
 
     <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/birthday_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/birthday_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toBottomOf="@+id/message"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:id="@+id/ref_date_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ref_date_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintTop_toBottomOf="@+id/birthday_editor"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/birthday_button"
@@ -41,8 +47,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/birthday_editor"
         app:layout_constraintLeft_toRightOf="@id/birthday_editor"
         app:layout_constraintTop_toTopOf="@id/birthday_editor"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="41dp" />
+ />
 
     <Button
         android:id="@+id/ref_date_button"
@@ -54,9 +59,7 @@
         android:tag="@string/ref_date_editor_id"
         app:layout_constraintBottom_toBottomOf="@+id/ref_date_editor"
         app:layout_constraintLeft_toRightOf="@id/ref_date_editor"
-        app:layout_constraintTop_toTopOf="@id/ref_date_editor"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="115dp" />
+        app:layout_constraintTop_toTopOf="@id/ref_date_editor" />
 
     <EditText
         android:id="@+id/birthday_editor"
@@ -64,11 +67,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthday_label"
-        tools:layout_editor_absoluteY="46dp" />
+        tools:layout_editor_absoluteY="67dp"
+        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
         android:id="@+id/ref_date_editor"
@@ -76,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ref_date_label"
@@ -87,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/function_label"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -98,6 +103,7 @@
         android:layout_width="247dp"
         android:layout_height="130dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/function_label"
@@ -190,17 +196,29 @@
     </com.unnamedgreencompany.btwhahaa.RadioGrid>
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/textButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="submitInputs"
-        android:text="@string/meme_label"
+        android:text="@string/send_text_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/functions"
         tools:layout_editor_absoluteY="357dp" />
+
+    <Button
+        android:id="@+id/twitchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textButton"
+        tools:layout_editor_absoluteY="445dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,7 +5,7 @@
     <string name="birthday_editor_id">birthday_editor</string>
     <string name="ref_date_editor_id">ref_date_editor</string>
     <string name="picker_label">Choose...</string>
-    <string name="meme_label">Meme!</string>
+    <string name="send_text_label">Send Text</string>
     <string name="function_label">Choose a Function</string>
     <string name="square_label">x^2</string>
     <string name="cube_label">x^3</string>
@@ -20,7 +20,7 @@
     <string name="acos_label">arccos(x)</string>
     <string name="atan_label">arctan(x)</string>
     <string name="date_parse_error">That\'s not a date LUL</string>
-    <string name="negative_age_error">You cannot be born before the current date LUL</string>
-    <string name="young_age_error">You\'re too young to use this app BabyRage</string>
-    <string name="missing_function_error">Forgot to choose a function LUL</string>
+    <string name="negative_age_error">You\'re not born yet LUL</string>
+    <string name="young_age_error">You\'re too young BabyRage</string>
+    <string name="missing_function_error">Need to pick a function btw haHAA</string>
 </resources>

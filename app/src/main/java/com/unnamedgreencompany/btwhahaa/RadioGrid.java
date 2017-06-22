@@ -10,13 +10,14 @@ import android.widget.TableRow;
 public class RadioGrid extends TableLayout implements View.OnClickListener {
 
     private RadioButton activeRadioButton;
+    private OnOptionSelectListener mListener;
 
     /**
      * @param context
      */
     public RadioGrid(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
+        initListener(context);
     }
 
     /**
@@ -25,7 +26,16 @@ public class RadioGrid extends TableLayout implements View.OnClickListener {
      */
     public RadioGrid(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // TODO Auto-generated constructor stub
+        initListener(context);
+    }
+
+    private void initListener(Context context) {
+        if (context instanceof OnOptionSelectListener) {
+            mListener = (OnOptionSelectListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnOptionSelectListener");
+        }
     }
 
     @Override
@@ -36,6 +46,7 @@ public class RadioGrid extends TableLayout implements View.OnClickListener {
         }
         rb.setChecked(true);
         activeRadioButton = rb;
+        mListener.onFunctionSelection(rb.getId());
     }
 
     /* (non-Javadoc)
@@ -72,5 +83,9 @@ public class RadioGrid extends TableLayout implements View.OnClickListener {
             return activeRadioButton.getId();
         }
         return -1;
+    }
+
+    public interface OnOptionSelectListener {
+        void onFunctionSelection(int fieldId);
     }
 }

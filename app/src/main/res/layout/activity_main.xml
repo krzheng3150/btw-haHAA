@@ -100,8 +100,8 @@
 
     <com.unnamedgreencompany.btwhahaa.RadioGrid
         android:id="@+id/functions"
-        android:layout_width="247dp"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,16 +112,37 @@
         <TableRow>
 
             <RadioButton
-                android:id="@+id/fun_square"
+                android:id="@+id/fun_ident"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/square_label" />
+                android:text="@string/ident_label" />
 
             <RadioButton
                 android:id="@+id/fun_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/exp_label" />
+
+            <RadioButton
+                android:id="@+id/fun_recip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recip_label" />
+        </TableRow>
+
+        <TableRow>
+
+            <RadioButton
+                android:id="@+id/fun_square"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/square_label" />
+
+            <RadioButton
+                android:id="@+id/fun_exp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exp2_label" />
 
             <RadioButton
                 android:id="@+id/fun_tan"
@@ -139,16 +160,16 @@
                 android:text="@string/cube_label" />
 
             <RadioButton
-                android:id="@+id/fun_exp2"
+                android:id="@+id/fun_exp12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/exp2_label" />
+                android:text="@string/exp12_label" />
 
             <RadioButton
-                android:id="@+id/fun_asin"
+                android:id="@+id/fun_atan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/asin_label" />
+                android:text="@string/atan_label" />
         </TableRow>
 
         <TableRow>
@@ -166,10 +187,10 @@
                 android:text="@string/ln_label" />
 
             <RadioButton
-                android:id="@+id/fun_acos"
+                android:id="@+id/fun_asin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/acos_label" />
+                android:text="@string/asin_label" />
         </TableRow>
 
         <TableRow>
@@ -187,10 +208,10 @@
                 android:text="@string/log2_label" />
 
             <RadioButton
-                android:id="@+id/fun_atan"
+                android:id="@+id/fun_acos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/atan_label" />
+                android:text="@string/acos_label" />
         </TableRow>
 
     </com.unnamedgreencompany.btwhahaa.RadioGrid>

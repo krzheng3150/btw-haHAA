@@ -119,14 +119,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
 
         int refYear = refDate.get(Calendar.YEAR);
         int refDayOfYear = refDate.get(Calendar.DAY_OF_YEAR);
-        boolean refDateWithinLeapPeriod = (refYear % 4 == 1 && refDayOfYear < 60) || (refYear % 4 == 0 && refDayOfYear > 60);
+        boolean refDateAfterLeapDay = refYear % 4 == 0 && refDayOfYear > 60;
+        boolean refDateBeginningOfPostLeapYear = refYear % 4 == 1 && refDayOfYear < 60;
+        boolean refDateWithinLeapPeriod = refDateAfterLeapDay || refDateBeginningOfPostLeapYear;
 
         double numDaysInYear = 365;
-
         if (isBornAfterLeapDay && !refDateWithinLeapPeriod) {
             birthDayOfYear -= 1;
         }
         else if (refDateWithinLeapPeriod) {
+            if (refDateAfterLeapDay && birthYear % 4 != 0 && birthDayOfYear > 60) {
+                birthDayOfYear += 1;
+            }
             numDaysInYear = 366;
         }
 

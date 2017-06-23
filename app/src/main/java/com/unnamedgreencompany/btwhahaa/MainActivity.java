@@ -107,8 +107,70 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     public void calculate() {
         if (validateInputs()) {
             double age = getAge(birthday, refDate);
+            String dispFormat = "%s";
+            switch(functionId) {
+                case R.id.fun_square:
+                    age = Math.sqrt(age);
+                    dispFormat = "%s^2";
+                    break;
+                case R.id.fun_cube:
+                    age = Math.pow(age, 1.0 / 3.0);
+                    dispFormat = "%s^3";
+                    break;
+                case R.id.fun_sqrt:
+                    age *= age;
+                    dispFormat = "sqrt(%s)";
+                    break;
+                case R.id.fun_cbrt:
+                    age = age * age * age;
+                    dispFormat = "%s^(1/3)";
+                    break;
+                case R.id.fun_exp:
+                    age = Math.log(age);
+                    dispFormat = "e^%s";
+                    break;
+                case R.id.fun_exp2:
+                    age = Math.log(age) / Math.log(2);
+                    dispFormat = "2^%s";
+                    break;
+                case R.id.fun_exp12:
+                    age = Math.log(age) / Math.log(12);
+                    dispFormat = "12^%s";
+                    break;
+                case R.id.fun_ln:
+                    age = Math.exp(age);
+                    dispFormat = "ln(%s)";
+                    break;
+                case R.id.fun_log2:
+                    age = Math.pow(2, age);
+                    dispFormat = "log(%s)";
+                    break;
+                case R.id.fun_recip:
+                    age = 12.0 / age;
+                    dispFormat = "12 / %s";
+                    break;
+                case R.id.fun_tan:
+                    age = Math.atan(age);
+                    dispFormat = "tan(%s)";
+                    break;
+                case R.id.fun_atan:
+                    age = Math.tan(age);
+                    dispFormat = "arctan(%s)";
+                    break;
+                case R.id.fun_asin:
+                    age = Math.sin(age);
+                    dispFormat = "arcsin(%s)";
+                    break;
+                case R.id.fun_acos:
+                    age = Math.cos(age);
+                    dispFormat = "arccos(%s)";
+                    break;
+            }
+            String decimalFormat = (age == Math.floor(age)) ? "%.0f" : "%.3f";
             messageDisplay.setTextColor(Color.BLACK);
-            messageDisplay.setText(String.format(Locale.getDefault(), "I'm %f btw haHAA", age));
+            messageDisplay.setText(String.format(Locale.getDefault(), "I'm %s btw haHAA",
+                    String.format(Locale.getDefault(), dispFormat,
+                    String.format(Locale.getDefault(), decimalFormat, age))));
         }
     }
 

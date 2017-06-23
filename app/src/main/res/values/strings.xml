@@ -5,7 +5,9 @@
     <string name="birthday_editor_id">birthday_editor</string>
     <string name="ref_date_editor_id">ref_date_editor</string>
     <string name="picker_label">Choose...</string>
-    <string name="send_text_label">Send Text</string>
+    <string name="send_text_label">Text</string>
+    <string name="send_email_label">Email</string>
+    <string name="send_twitch_label">Twitch</string>
     <string name="function_label">Choose a Function</string>
     <string name="ident_label">x</string>
     <string name="square_label">x^2</string>

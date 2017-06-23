@@ -57,13 +57,14 @@
         android:id="@+id/ref_date_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="-99dp"
         android:onClick="showDatePickerDialog"
         android:text="@string/picker_label"
         android:tag="@string/ref_date_editor_id"
         app:layout_constraintBottom_toBottomOf="@+id/ref_date_editor"
         app:layout_constraintLeft_toRightOf="@id/ref_date_editor"
-        app:layout_constraintTop_toTopOf="@id/ref_date_editor" />
+        app:layout_constraintTop_toTopOf="@id/ref_date_editor"
+        app:layout_constraintVertical_bias="0.592" />
 
     <EditText
         android:id="@+id/birthday_editor"
@@ -229,25 +230,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/send_text_label"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/emailButton"
         app:layout_constraintTop_toBottomOf="@+id/functions"
         tools:layout_editor_absoluteY="357dp" />
+
+    <Button
+        android:id="@+id/emailButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/send_email_label"
+        app:layout_constraintLeft_toRightOf="@+id/textButton"
+        app:layout_constraintRight_toLeftOf="@+id/twitchButton"
+        app:layout_constraintTop_toBottomOf="@+id/functions"
+        tools:layout_editor_absoluteY="445dp" />
 
     <Button
         android:id="@+id/twitchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="@string/send_twitch_label"
+        app:layout_constraintLeft_toRightOf="@+id/emailButton"
+        app:layout_constraintTop_toBottomOf="@+id/functions"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textButton"
         tools:layout_editor_absoluteY="445dp" />
 
 </android.support.constraint.ConstraintLayout>

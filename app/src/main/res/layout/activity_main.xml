@@ -37,8 +37,8 @@
         android:background="@color/colorBackground"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthday_editor"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="16dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp" />
 
     <Button
         android:id="@+id/birthday_button"
@@ -51,13 +51,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/birthday_editor"
         app:layout_constraintLeft_toRightOf="@id/birthday_editor"
         app:layout_constraintTop_toTopOf="@id/birthday_editor"
- />
+    />
 
     <Button
         android:id="@+id/ref_date_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="-99dp"
+        android:layout_marginLeft="5dp"
         android:onClick="showDatePickerDialog"
         android:text="@string/picker_label"
         android:tag="@string/ref_date_editor_id"
@@ -254,11 +254,13 @@
         android:id="@+id/twitchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="spamTwitch"
         android:text="@string/send_twitch_label"
         app:layout_constraintLeft_toRightOf="@+id/emailButton"
-        app:layout_constraintTop_toBottomOf="@+id/functions"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/functions"
         tools:layout_editor_absoluteY="445dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -257,6 +257,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         }
     }
 
+    public void spamTwitch(View v) {
+        if (!validateInputs()) {
+            alert(getString(R.string.has_errors));
+            return;
+        }
+        //TODO implement this part
+        alert(getString(R.string.coming_soon));
+    }
+
     @Override
     public void onDateSelection(int fieldId, int year, int month, int day) {
         EditText dateEditor = (EditText)findViewById(fieldId);

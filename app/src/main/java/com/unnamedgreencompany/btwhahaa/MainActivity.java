@@ -1,5 +1,7 @@
 package com.unnamedgreencompany.btwhahaa;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -262,8 +264,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
             alert(getString(R.string.has_errors));
             return;
         }
-        //TODO implement this part
-        alert(getString(R.string.coming_soon));
+        String message = makeMessage();
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("label", message);
+        clipboard.setPrimaryClip(clip);
+        alert(getString(R.string.pasta_copied));
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.twitch.tv/nl_kripp"));
+        startActivity(intent);
     }
 
     @Override

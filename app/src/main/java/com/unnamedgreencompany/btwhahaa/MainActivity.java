@@ -1,11 +1,10 @@
 package com.unnamedgreencompany.btwhahaa;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.Telephony;
 import android.support.v4.app.DialogFragment;
@@ -16,6 +15,9 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.gikk.twirk.Twirk;
+import com.gikk.twirk.TwirkBuilder;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     private RadioGrid functions;
 
     private static final long ONE_YEAR = 31536000000L;
+
+    private static final String CHANNEL = "#nl_kripp";
+    private static final String NICKNAME = "btw_haHAA_app";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -265,13 +270,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
             return;
         }
         String message = makeMessage();
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("label", message);
-        clipboard.setPrimaryClip(clip);
-        alert(getString(R.string.pasta_copied));
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://www.twitch.tv/nl_kripp"));
-        startActivity(intent);
+        new TwitchTask().execute(CHANNEL, NICKNAME, getString(R.string.oauth), message);
     }
 
     @Override
@@ -299,5 +298,42 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     @Override
     public void onFunctionSelection(int fieldId) {
         displayResult();
+    }
+
+    private class TwitchTask extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            publishProgress("Connecting btw haHAA");
+            final Twirk twirk = new TwirkBuilder(params[0], params[1], params[2])
+                    .setVerboseMode(true).build();
+            try {
+                if (!twirk.connect()) {
+                    return "Error: Unable to connect to Twitch";
+                }
+                publishProgress("Sending message btw haHAA");
+                twirk.channelMessage(params[3]);
+                publishProgress(params[3]);
+                return null;
+            }
+            catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            messageDisplay.setTextColor(Color.BLACK);
+            messageDisplay.setText(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String error) {
+            if (error == null) {
+                alert("Success!");
+            }
+            else {
+                alert(error);
+            }
+        }
     }
 }

@@ -28,9 +28,9 @@
     <string name="negative_age_error">You\'re not born yet LUL</string>
     <string name="young_age_error">You\'re too young BabyRage</string>
     <string name="missing_function_error">Need to pick a function btw haHAA</string>
+    <string name="oauth">oauth:sdpolw4rfhrckr9qq6fmdyykuifkuo</string>
     <string name="has_errors">Fix your errors first LUL</string>
     <string name="email_need_setup">Not having email set up in 2016 LUL</string>
     <string name="ok">OK</string>
     <string name="coming_soon">Coming soon...hopefully Jebaited</string>
-    <string name="pasta_copied">Your message is copied. Now pasta this into Twitch chat.</string>
 </resources>

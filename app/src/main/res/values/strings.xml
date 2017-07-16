@@ -32,6 +32,8 @@
     <string name="young_age_error">You\'re too young BabyRage</string>
     <string name="missing_function_error">Need to pick a function btw haHAA</string>
     <string name="oauth">oauth:sdpolw4rfhrckr9qq6fmdyykuifkuo</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">ybdDgDv8r4ffjDke21PrJbaNe</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">fJHELmiLR2pJQPWYaWwQPdFGo5SjVh5Jw7i9CdnDdEvcnrYTfe</string>
     <string name="has_errors">Fix your errors first LUL</string>
     <string name="email_need_setup">Not having email set up in 2016 LUL</string>
     <string name="ok">OK</string>

@@ -35,6 +35,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.gikkman:Java-Twirk:0.3'
     compile 'com.facebook.android:facebook-android-sdk:4.24.0'
+    compile 'com.twitter.sdk.android:twitter:3.0.0'
 
     testCompile 'junit:junit:4.12'
 }

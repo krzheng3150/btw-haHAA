@@ -20,6 +20,13 @@ import android.widget.TextView;
 
 import com.gikk.twirk.Twirk;
 import com.gikk.twirk.TwirkBuilder;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.tweetcomposer.ComposerActivity;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -38,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     private EditText refDateEditor;
     private RadioGrid functions;
 
+    private TwitterLoginButton twitterLoginButton;
+
     private static final long ONE_YEAR = 31536000000L;
 
     private static final String CHANNEL = "#nl_kripp";
@@ -46,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Twitter.initialize(this);
+
         setContentView(R.layout.activity_main);
 
         dateFormat = DateFormat.getDateFormat(this);
@@ -69,7 +81,27 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         refDateEditor.setText(dateFormat.format(refDate.getTime()));
         refDateEditor.setOnFocusChangeListener(focusListener);
 
-        functions = (RadioGrid)findViewById(R.id.functions);;
+        functions = (RadioGrid)findViewById(R.id.functions);
+
+        twitterLoginButton = (TwitterLoginButton) findViewById(R.id.twitterLoginButton);
+        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                String message = makeMessage();
+                final Intent intent = new ComposerActivity.Builder(getApplicationContext())
+                        .session(result.data)
+                        .image(null)
+                        .text(message)
+                        .hashtags("#haHAA")
+                        .createIntent();
+                startActivity(intent);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                alert(exception.getMessage());
+            }
+        });
     }
 
     private View.OnFocusChangeListener focusListener = new View.OnFocusChangeListener() {
@@ -303,7 +335,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     }
 
     public void shareOnTwitter(View v) {
-        //TODO complete this
+        if (!validateInputs()) {
+            alert(getString(R.string.has_errors));
+            return;
+        }
+        twitterLoginButton.performClick();
     }
 
     public void exit(View v) {
@@ -335,6 +371,12 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     @Override
     public void onFunctionSelection(int fieldId) {
         displayResult();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        twitterLoginButton.onActivityResult(requestCode, resultCode, data);
     }
 
     private void openWebpage(String url) {

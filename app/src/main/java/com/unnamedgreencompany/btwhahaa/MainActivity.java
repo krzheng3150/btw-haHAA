@@ -343,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     }
 
     public void exit(View v) {
-        //TODO complete this
+        finish();
     }
 
     @Override

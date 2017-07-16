@@ -32,11 +32,10 @@
     <string name="young_age_error">You\'re too young BabyRage</string>
     <string name="missing_function_error">Need to pick a function btw haHAA</string>
     <string name="oauth">oauth:sdpolw4rfhrckr9qq6fmdyykuifkuo</string>
-    <string name="facebook_app_id">1881133272150755</string>
     <string name="has_errors">Fix your errors first LUL</string>
     <string name="email_need_setup">Not having email set up in 2016 LUL</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="coming_soon">Coming soon...hopefully Jebaited</string>
-    <string name="fb_confirm">You are about to log in to Facebook and post your message on your wall.\nPress OK to continue.\nPress Cancel to go back.</string>
+    <string name="fb_confirm">Message copied. Press Paste to paste your message once you log in to Facebook btw haHAA</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.unnamedgreencompany.btwhahaa;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,28 +14,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.share.ShareApi;
-import com.facebook.share.Sharer;
-import com.facebook.share.model.ShareContent;
-import com.facebook.share.model.ShareLinkContent;
 import com.gikk.twirk.Twirk;
 import com.gikk.twirk.TwirkBuilder;
 
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
@@ -54,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
 
     private static final String CHANNEL = "#nl_kripp";
     private static final String NICKNAME = "btw_haHAA_app";
-
-    private CallbackManager fbCallbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +69,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         refDateEditor.setText(dateFormat.format(refDate.getTime()));
         refDateEditor.setOnFocusChangeListener(focusListener);
 
-        functions = (RadioGrid)findViewById(R.id.functions);
-
-        AppEventsLogger.activateApp(getApplication());
-        fbCallbackManager = CallbackManager.Factory.create();
+        functions = (RadioGrid)findViewById(R.id.functions);;
     }
 
     private View.OnFocusChangeListener focusListener = new View.OnFocusChangeListener() {
@@ -298,13 +281,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
             return;
         }
         String message = makeMessage();
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("copypasta", message);
+        clipboard.setPrimaryClip(clip);
 
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        loginToFacebookToShare(message);
+                        openWebpage("https://www.facebook.com");
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;
@@ -351,55 +337,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         displayResult();
     }
 
-    private void loginToFacebookToShare(String message) {
-        LoginManager loginManager = LoginManager.getInstance();
-        loginManager.logInWithReadPermissions(this, Collections.singletonList("public_profile"));
-        //loginManager.logInWithPublishPermissions(this, Collections.singletonList("publish_actions"));
-        loginManager.registerCallback(fbCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                doShareOnFacebook(message);
-            }
-
-            @Override
-            public void onCancel() {
-                alert("User cancelled Facebook login");
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-                alert(e.getMessage());
-            }
-        });
-    }
-
-    private void doShareOnFacebook(String message) {
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .build();
-        ShareApi shareApi = new ShareApi(content);
-        shareApi.setMessage(message);
-        shareApi.share(new FacebookCallback<Sharer.Result>() {
-            @Override
-            public void onSuccess(Sharer.Result result) {
-                alert("Success!");
-            }
-
-            @Override
-            public void onCancel() {
-                alert("User cancelled message send");
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-                alert(e.getMessage());
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int request, int result, Intent data) {
-        super.onActivityResult(request, result, data);
-        fbCallbackManager.onActivityResult(request, result, data);
+    private void openWebpage(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 
     private class TwitchTask extends AsyncTask<String, String, String> {
